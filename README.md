@@ -16,10 +16,9 @@ Track income and expenses, forecast future spending, catch unusual transactions,
 
 ## 📸 Screenshots
 
-<!-- Replace with real images, e.g. docs/screenshots/dashboard.png -->
-| Dashboard | Forecast | Face login |
+| Dashboard | Forecast & AI tools | Face login |
 |---|---|---|
-| _add screenshot_ | _add screenshot_ | _add screenshot_ |
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Forecast](docs/screenshots/forecast.png) | ![Face login](docs/screenshots/face-login.png) |
 
 ---
 
