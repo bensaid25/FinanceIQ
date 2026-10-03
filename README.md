@@ -72,7 +72,7 @@ Track income and expenses, forecast future spending, catch unusual transactions,
 
 ```
 browser ──► nginx :3000 ──► /          Angular app (static files)
-                       └──► /api/*     FastAPI :8000 ──► PostgreSQL
+                       └──► /api/*     FastAPI  ──► PostgreSQL
 ```
 
 nginx forwards `/api/...` to the backend, so the browser only talks to a single origin.
@@ -86,37 +86,6 @@ nginx forwards `/api/...` to the backend, so the browser only talks to a single 
 | ML | Prophet (forecasting), scikit-learn (anomalies, categorization) |
 | Face recognition | DeepFace (VGG-Face), TensorFlow |
 | Orchestration | Docker Compose |
-
----
-
-## 🚀 Quick start (Docker)
-
-**Requirements:** Docker Desktop (or Docker Engine with Compose).
-
-```bash
-# 1. Create your settings file
-cp .env.example .env          # PowerShell: Copy-Item .env.example .env
-
-# 2. Generate a JWT secret and paste it after FINANCEIQ_JWT_SECRET= in .env
-python -c "import secrets; print(secrets.token_urlsafe(48))"
-
-# 3. Create the PostgreSQL data volume (once)
-docker volume create financeiq_pgdata
-
-# 4. Build and start
-docker compose up --build
-```
-
-Then open:
-
-- 🖥️ App: <http://localhost:3000>
-- 📖 API docs: <http://localhost:8000/docs>
-
-Create an account with **Sign up**, enroll your face, and log in.
-
-> ⏳ The first build is long (TensorFlow, Prophet) and the first face verification is slow while model weights download. Both happen only once.
-
-Database migrations are applied **automatically** when the backend starts. Stop everything with `docker compose down` (your data is kept).
 
 ---
 
