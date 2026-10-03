@@ -1,0 +1,54 @@
+# ---------- Secrets (never commit) ----------
+.env
+.env.*
+!.env.example
+auth/.jwt_secret
+*.pem
+*.key
+
+# ---------- Personal data ----------
+# Enrolled face photos are biometric data
+auth/faces/
+
+# Local databases (SQLite fallback, legacy auth/finance DBs)
+*.db
+*.sqlite
+*.sqlite3
+
+# ---------- Python ----------
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ---------- Node / React ----------
+node_modules/
+frontend/node_modules/
+frontend/build/
+npm-debug.log*
+yarn-error.log*
+
+# ---------- Docker ----------
+# Compose override files with local settings
+docker-compose.override.yml
+
+# ---------- Logs and temp ----------
+*.log
+tmp/
+temp/
+
+# ---------- OS / editors ----------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ---------- Large data (uncomment if you keep datasets locally) ----------
+# data/raw/
+# *.csv
