@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-financeiq}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Définis POSTGRES_PASSWORD dans le fichier .env}
+      POSTGRES_DB: ${POSTGRES_DB:-financeiq}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-financeiq} -d ${POSTGRES_DB:-financeiq}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build: .
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-financeiq}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-financeiq}
+      FINANCEIQ_JWT_SECRET: ${FINANCEIQ_JWT_SECRET:?Définis FINANCEIQ_JWT_SECRET (32 caractères minimum) dans .env}
+      FINANCEIQ_FACES_DIR: /data/faces
+      FINANCEIQ_ADMINS: ${FINANCEIQ_ADMINS:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./auth/faces:/data/faces              # photos des visages (tes photos actuelles sont conservées)
+      - deepface_weights:/root/.deepface      # poids du modèle VGG-Face : téléchargés une seule fois
+    ports:
+      - "8000:8000"                           # utile pour /docs en local ; à retirer en production
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  pgdata:
+    external: true
+    name: financeiq_pgdata                    # le volume qui contient déjà tes données migrées
+  deepface_weights:
