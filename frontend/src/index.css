@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg-primary:    #0a0a0f;
+  --bg-secondary:  #111118;
+  --bg-card:       #16161f;
+  --bg-hover:      #1e1e2a;
+  --bg-input:      #1a1a24;
+  --accent:        #c8f135;
+  --accent-dim:    #a3cc28;
+  --accent-red:    #ff4d6d;
+  --accent-blue:   #4d9fff;
+  --accent-purple: #9d6fff;
+  --accent-amber:  #ffb347;
+  --accent-teal:   #00d4aa;
+  --text-primary:  #f0f0f8;
+  --text-secondary:#8888aa;
+  --text-muted:    #444466;
+  --border:        #222230;
+  --border-light:  #2a2a3a;
+  --shadow:        0 4px 24px rgba(0,0,0,0.4);
+}
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, select:focus { border-color: var(--accent); }
+button { font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s; }
