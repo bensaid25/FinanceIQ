@@ -186,8 +186,7 @@ More on the data model, migrations and deployment: [DATABASE_AND_DOCKER.md](DATA
 
 ## 📄 License
 
-Add a license file (for example MIT) and reference it here: `This project is licensed under the MIT License. See [LICENSE](LICENSE).`
-
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
 ---
 
 ## 👤 Author
