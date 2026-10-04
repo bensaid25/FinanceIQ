@@ -27,7 +27,6 @@ Track income and expenses, forecast future spending, catch unusual transactions,
 - [Features](#-features)
 - [Architecture](#-architecture)
 - [Quick start (Docker)](#-quick-start-docker)
-- [Local development](#-local-development-without-docker)
 - [Configuration](#-configuration)
 - [Machine learning](#-machine-learning)
 - [Tests](#-tests)
